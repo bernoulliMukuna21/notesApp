@@ -23,7 +23,7 @@ Once the project is cloned from GitHub, the following steps ate to be taken in o
    let dbName = ‘notes-test’;
    ```
 
-* Now before running the application, we will need to add ```.env``` file to the root directory (\personal-notes\.env). Then, copy and paste the block below in that file:
+* Now before running the application, we will need to add ```.env``` file to the root directory (personal-notes/.env). Then, copy and paste the block below in that file:
 
    ```console
    MONGODB_URI = "mongodb://localhost:27017"
