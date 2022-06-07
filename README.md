@@ -13,14 +13,26 @@ Once the project is cloned from GitHub, the following steps ate to be taken in o
 
 * After install all the packages, the next step is to check the file database/connection.js. For running the apis or testing them with jest, the variable dbName will need to change.
 
-   If running the apis, we use:
+   If running the apis, change the variable to:
    ```console 
    let dbName = process.env.DATABASE_NAME || ‘’;
    ```
 
-   If testing with jest, we use:
+   If testing with jest, change the variable to:
    ```console
    let dbName = ‘notes-test’;
+   ```
+
+* Now before running the application, we will need to add ```.env``` file to the root directory (\personal-notes\.env). Then, copy and paste the block below in that file:
+
+   ```console
+   MONGODB_URI = "mongodb://localhost:27017"
+   DATABASE_NAME = "notesDB"
+   PORT = "3000"
+   HOST = "localhost"
+   SALT_FACTOR = 15;
+   SESSION_SECRET_ID = "02TL9nzKufquQLBq6v56"
+   COOKIE_EXPIRING_TIME = 2592000000
    ```
 
 * Once the changes are made accordingly,
