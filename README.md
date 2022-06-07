@@ -37,16 +37,16 @@ Once the project is cloned from GitHub, the following steps ate to be taken in o
 
 * Once the changes are made accordingly,
 
-   To run the apis, use the following command:
-   ```console
-   npm run start
-   ```
+   - To run the apis, use the following command:
+      ```console
+      npm run start
+      ```
+      Use [postman](https://www.postman.com/downloads/) to run the endpoints. If you are using Visual Studio Code, you can an extension called ``` Thunder Client```.
 
-   To run all the unit tests:
-   ```console
-   npm run test
-   ```
-* Once the changes are made accordingly,
+   - To run all the unit tests:
+      ```console
+      npm run test
+      ```
 
 ## 2.	Instructions to the UX team (i.e., how to use your API)
 The application implements Rest API. As well as creating endpoints for handling personal notes, there are also endpoints for the user. 
