@@ -1,32 +1,39 @@
 # Notes
 ## 1.	How to run your application
 Once the project is cloned from GitHub, the following steps ate to be taken in order to run the application:
-* ```console 
+* First step is to install the packages:
+   ```console 
    npm install
    ```
+   It is possible that some of the packages will not be installed after running this command above. In this case, please install individual package (those are not installed) with the following command:
+   e.g. 
+   ```console 
+   npm install dotenv
+   ```
+
 * After install all the packages, the next step is to check the file database/connection.js. For running the apis or testing them with jest, the variable dbName will need to change.
 
-If running the apis, we use:
-```console 
-let dbName = process.env.DATABASE_NAME || ‘’;
-```
+   If running the apis, we use:
+   ```console 
+   let dbName = process.env.DATABASE_NAME || ‘’;
+   ```
 
-If testing with jest, we use:
-```console
-let dbName = ‘notes-test’;
-```
+   If testing with jest, we use:
+   ```console
+   let dbName = ‘notes-test’;
+   ```
 
 * Once the changes are made accordingly,
 
-To run the apis, use the following command:
-```console
-npm run start
-```
+   To run the apis, use the following command:
+   ```console
+   npm run start
+   ```
 
-To run all the tests:
-```console
-npm run test
-```
+   To run all the tests:
+   ```console
+   npm run test
+   ```
 
 ## 2.	Instructions to the UX team (i.e., how to use your API)
 The application implements Rest API. As well as creating endpoints for handling personal notes, there are also endpoints for the user. 
