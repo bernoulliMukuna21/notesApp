@@ -1,9 +1,9 @@
 # Notes
-1.	How to run your application
+## 1.	How to run your application
 Once the project is cloned from GitHub, the following steps ate to be taken in order to run the application:
-1.	npm install
+1.1.	npm install
 
-2.	After install all the packages, the next step is to check the file database/connection.js. For running the apis or testing them with jest, the variable dbName will need to change.
+1.2.	After install all the packages, the next step is to check the file database/connection.js. For running the apis or testing them with jest, the variable dbName will need to change.
 
 If running the apis, we use:
 let dbName = process.env.DATABASE_NAME || ‘’; 
@@ -11,14 +11,14 @@ let dbName = process.env.DATABASE_NAME || ‘’;
 If testing with jest, we use: 
 let dbName = ‘notes-test’; 
 
-3.	Once the changes are made accordingly,
+1.3.	Once the changes are made accordingly,
 
 To run the apis, use the following command: 
 npm run start
 
 To run all the tests:
 npm run test
-2.	Instructions to the UX team (i.e., how to use your API)
+## 2.	Instructions to the UX team (i.e., how to use your API)
 The application implements Rest API. As well as creating endpoints for handling personal notes, there are also endpoints for the user. 
 First, the document will talk about the methods and endpoints created for handling the users in the application:
 -	POST http://localhost:3000/api/users/join
@@ -62,17 +62,17 @@ So:
 o	For unarchive notes: http://localhost:3000/api/notes/active
 o	For archive notes: http://localhost:3000/api/notes/archive 
 
-3.	Your choice of technology and the reasons for using them (and any alternatives you considered)
+## 3.	Your choice of technology and the reasons for using them (and any alternatives you considered)
 The development is done with NodeJS (Typescript) and mongoDB for the database. As for the testing, the project makes use of jest with supertest. 
 The reason for choosing NodeJS for the development is:
 -	Familiarity with JavaScript. This made the implementation quicker since I didn’t have a to learn a lot from scratch
 -	Easily scalable to accommodate more complex tasks that the application might require later. 
 -	NodeJS also offers a great speed on its performance which is always plus sign.
 As for MongoDB, the main reason for using this is first because the speed of querying. Another thing that I could mention is that MongoDB representation as JSON makes easy to use with NodeJS.
-4.	If you were to spend more time on this task, what would you change and what other key features would you add.
+## 4.	If you were to spend more time on this task, what would you change and what other key features would you add.
 -	I would have added the tests for the user apis, which something that I have not done with this one. 
 -	Other great features:
-o	drafting a note
-o	group user notes (something like google docs where multiple people can type the notes)
-o	share notes with other users. The users that you have shared the notes can now have accessed to the note. 
+        o	drafting a note
+        o	group user notes (something like google docs where multiple people can type the notes)
+        o	share notes with other users. The users that you have shared the notes can now have accessed to the note. 
 
