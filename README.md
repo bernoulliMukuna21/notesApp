@@ -42,10 +42,11 @@ Once the project is cloned from GitHub, the following steps ate to be taken in o
    npm run start
    ```
 
-   To run all the tests:
+   To run all the unit tests:
    ```console
    npm run test
    ```
+* Once the changes are made accordingly,
 
 ## 2.	Instructions to the UX team (i.e., how to use your API)
 The application implements Rest API. As well as creating endpoints for handling personal notes, there are also endpoints for the user. 
