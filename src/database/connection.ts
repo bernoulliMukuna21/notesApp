@@ -4,7 +4,7 @@ import log from '../logger/index';
 
 dotenv.config();
 
-// Normal db
+// db
 let dbName = process.env.DATABASE_NAME || ''; 
 
 // db for test
