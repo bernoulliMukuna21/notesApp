@@ -56,13 +56,23 @@ First, the document will talk about the methods and endpoints created for handli
 The api above is implemented for the purpose of the user to sign up and have their details saved in the database. To use this api, you will need to pass the following details in an object as key: name, password, passwordConfirmation and email. 
 
 For example, the body of the request can look like this:
-{name: ‘Joe’, password: ‘Something90’, passwordConfirmation: ‘Something90’, email: ‘joeDoe@something.com’}
+   ```console
+   {
+      name: "Joe",
+      password: "Something90", 
+      passwordConfirmation: "Something90", 
+      email: "joeDoe@something.com"
+   }
+   ```
+
 
 -	POST ```http://localhost:3000/api/users/login```
 Use the api above for logging into the application. A request is made with an object containing email and password of the user. 
 
 For example:
-{email: ‘joeDoe@something.com’, password: ‘Something90’}
+   ```console
+   {email: ‘joeDoe@something.com’, password: ‘Something90’}
+   ```
 
 -	GET ```http://localhost:3000/api/users/logout```
 A request, here, does not need to have any values passed to it. The purpose of this api is to log the user out of the application.

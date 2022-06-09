@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/bin/www.ts",
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "start": "nodemon ./src/bin/www.ts"
   },
   "author": "Bernoulli Mukuna",

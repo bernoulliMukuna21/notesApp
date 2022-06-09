@@ -1,60 +1,45 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { dbConnection } from '../../database/connection';
-import { NotesModel } from '../../model/notes.model';
 import { UserModel } from '../../model/user.model';
-
-// save notes
-// - when the user is not logged in, it should return an error
-// - when note is missing, it should return an error
-// - when note is less than 60 characters, it should fail to save and return 400 (error)
-// - when body is at least 60 characters, it should save note and return 200 (success)
-
 
 var agent = request.agent(app);
 
+let userPayload = {
+    name: "joe Doe",
+    email: "joeDoe@something.com",
+    password: "we12re34",
+    passwordConfirmation: "we12re34"
+};
+
+let notePayload = {
+    note: "Etiam, lectus. Sodales. Etiam risus velit quam, porta morbi adipiscing tempor Sociosqu massa donec sem dictumst luctus."
+}
+
+// tests
 describe('save notes', () => {
-   /*
-    * In order to complete the testing, one thing must first be done. 
-    * In the database/connection.ts file, dbName should be change to notes-test.
-    * This is to create a separate db to run the test.
-    * After the test, this db is deleted.
-    */
-   
-    beforeAll(() => {
-        if(!dbConnection._connectionString.includes('notes-test'))
-            throw new Error('notes-test DB must be used. Check database connection file!') 
-    })
 
-    afterAll(async () => {
-        dbConnection.db.dropDatabase()
-    });
-
+    // - when user is not logged in, return an error (forbidden)
     describe('given the user is not logged in', () => {
         it('should return error code 403 forbidden and message prompting login', async () => {
-            const status = "active" || "archive";
-            const response = await agent.get(`/api/notes/${status}`);
+            const response = await agent.post(`/api/notes`).send(notePayload);
 
             expect(response.statusCode).toEqual(403);
             expect(response.text).toMatch('Please login to proceed!');
         })
     });
 
+    // when the user is logged in
     describe('given the user is logged in', () => {
 
+        // call endpoint to sign up and login the user before each test
         beforeAll(async () => {
+            await UserModel.deleteMany({});
             await agent
                     .post('/api/users/join')
-                    .send({
-                        name: "joe Doe",
-                        email: "joeDoe@something.com",
-                        password: "we12re34",
-                        passwordConfirmation: "we12re34"
-                    });
+                    .send(userPayload);
         });
-
-        afterAll(async () =>  await agent.get('/api/users/logout'));
-
+ 
+        // no note passed to the body to save, it should fail
         describe('given the note body is missing', () => {
             it('should fail to save and return an error 400', async() => {
                 const response = await agent
@@ -66,6 +51,7 @@ describe('save notes', () => {
              })
         });
         
+        // note passed is less than 60 characters, it should fail
         describe('given the note body is less than 60 characters', () => {
             it('should fail to save and return an error 400', async() => {
                 const response = await agent
@@ -79,18 +65,16 @@ describe('save notes', () => {
              })
         });
 
+        // note passed is more than 60 characters, it should pass
         describe('given the note body is at least 60 characters long', () => {
             it('should fail to save and return an error 400', async() => {
                 const response = await agent
                                         .post(`/api/notes`)
-                                        .send({
-                                            note: "Etiam, lectus. Sodales. Etiam risus velit quam, porta morbi adipiscing tempor Sociosqu massa donec sem dictumst luctus."
-                                        });
+                                        .send(notePayload);
 
                 expect(response.statusCode).toEqual(200);
                 expect(response.text).toMatch('note saved');
-                console.log(response)
              })
         });
-    });
+    }); 
 })
